@@ -1,0 +1,73 @@
+.auth-container {
+  color: white;
+  h2 {
+    font-family: Montserrat;
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 80px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: white;
+  }
+  .auth-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 80vh;
+    form {
+      %input-text-styles {
+        font-size: 0.7rem;
+        color: var(--auth-color);
+        width: 18.75rem;
+        height: 3rem;
+        border: none;
+        padding: 0 1rem;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 1.3rem;
+      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      input {
+        border-radius: 0.8rem;
+        border: none;
+        background-color: var(--input-bg);
+        @extend %input-text-styles;
+      }
+      input::placeholder{
+        color: white
+      }
+      input:focus {
+        outline: none;
+      }
+      button {
+        background-color: var(--auth-button-bg);
+        margin: auto;
+        padding: 15px 126px 15px 126px;
+        border-radius: 0.8rem;
+        @extend %input-text-styles;
+      }
+    }
+
+    .remember-check {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+         width: 50%;
+         margin:auto;
+         margin-bottom: 1rem;
+  
+        input[type="checkbox"] {
+          background-color: var(--input-bg);
+          width: 0.8rem;
+          height: 1.5rem;
+        }
+      } 
+  
+  }
+}
+
+

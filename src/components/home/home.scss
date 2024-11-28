@@ -1,0 +1,123 @@
+.home-container {
+  width: 85vw;
+  margin: auto;
+  padding-bottom: 10vh;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 4rem 0;
+
+    button{
+        background-color: rgba(255, 255, 255,0);
+        border: none;
+        display: flex;
+        align-items: center;
+        color:#fff;
+        font-size: 1.5rem;
+       p{
+        margin-right: 1rem;
+       }
+       img{
+        width: 1.5rem
+       }
+    }
+  }
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    h1 {
+      margin-right: 1rem;
+    }
+    img {
+      width: 1.5rem;
+    }
+  }
+}
+.all-movies {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.one-movie {
+  background-color: var(--bg-each-movie);
+  color: white;
+  width: 13.625rem;
+  //   width: 17.625rem;
+  padding: 1rem 0.5rem;
+  gap: 16px;
+  border-radius: 12px;
+  opacity: 0px;
+  margin-bottom: 1.2rem;
+  .image-container {
+    width: 95%;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    img {
+      width: 100%;
+    }
+  }
+}
+.no-movies {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h4 {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 56px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  a {
+    text-decoration: none;
+    color: #ffff;
+    background-color: var(--auth-button-bg);
+    text-align: center;
+    top: 26.25rem;
+    left: 38.6875rem;
+    padding: 1rem;
+    gap: 0.3125rem;
+    border-radius: 0.625rem;
+    opacity: 0px;
+  }
+}
+.pagination{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.next, .prev{
+background-color: rgba(255, 255, 255,0);
+border: none;
+color: white;
+}
+
+@media (max-width: 500px) {
+  .home-container{
+    nav{
+      button{
+        p{
+                  display: none;
+        }
+      }
+    }
+  }
+  .all-movies {
+    justify-content: space-evenly;
+    
+  }
+  .one-movie{
+    margin-bottom: 3rem;
+  }
+}

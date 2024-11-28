@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  background-color: var(--bg);
+  color: white;
+}
+
+
+:root {
+  --bg: #093545;
+  --input-bg: #224957;
+  --auth-color: #ffff;
+  --auth-button-bg: #2BD17E; 
+  --bg-each-movie: #092C39;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  html {
+  font-size: 11px; /* 1rem = 16px */
+}
+}
+@media (max-width: 750px) {
+  html {
+    font-size: 9px; /* 1rem = 16px */
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+  font-size: 8px; /* 1rem = 16px */
+}
+}
