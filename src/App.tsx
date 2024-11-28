@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import Home from "./components/home/home";
 import Upload from "./components/upload/upload";
 import Verify from "./components/auth/verify";
+import Update from "./components/update/update";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/verify" element={<Verify/>}/>
+          <Route path="/update" element={<Update/>}/>
         </Routes>
         </div>
      

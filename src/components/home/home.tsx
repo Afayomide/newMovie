@@ -10,6 +10,7 @@ import imageIc from "../../assets/movieimg.svg";
 
 // Define the Movie type
 interface Movie {
+  _id: string;
   imageUrl: string;
   movieTitle: string;
   releaseDate: string;
@@ -17,7 +18,8 @@ interface Movie {
 
 const Card: React.FC<Movie> = (props) => {
   return (
-    <div className="one-movie">
+    <Link to={`/update?id=${props._id}`} >
+      <div className="one-movie">
       <div className="image-container">
         <img src={props.imageUrl} alt={props.movieTitle} />
       </div>
@@ -25,7 +27,8 @@ const Card: React.FC<Movie> = (props) => {
         <p>{props.movieTitle}</p>
         <p>{props.releaseDate}</p>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 };
 
@@ -145,6 +148,7 @@ const handlePageChange = (page: number) => {
             {currentMovies.map((movie, index) => (
               <Card
                 key={index}
+                _id={movie._id}
                 imageUrl={movie.imageUrl}
                 movieTitle={movie.movieTitle}
                 releaseDate={movie.releaseDate}

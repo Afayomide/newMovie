@@ -90,3 +90,97 @@ export const getMovies = async (req: Request, res: Response) => {
       .json({ message: "Error retrieving movies", error: error.message });
   }
 };
+
+export const getMovieById = async (req: Request, res: Response) => {
+  const userId = req.user?.userId;
+  const { movieId } = req.params;  
+
+  if (!userId) {
+    return res.status(400).json({ message: "User ID is missing or invalid" });
+  }
+
+  try {
+    const user = await User.findById(userId).populate("movies");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const movie = user.movies.find((movie) => movie._id.toString() === movieId);
+    if (!movie) {
+      return res.status(404).json({ message: "Movie not found" });
+    }
+
+    return res.status(200).json({ movie });
+  } catch (error: any) {
+    console.error(error);
+    return res.status(500).json({
+      message: "Error retrieving the movie",
+      error: error.message,
+    });
+  }
+};
+
+
+export const updateMovie = async (req: Request, res: Response) => {
+  const id = req.user?.userId;
+  if (!id) {
+    return res.status(400).json({ message: "User ID is missing or invalid" });
+  }
+
+  const { movieId } = req.params;  
+  const file = req.file;
+  const { title, releaseDate } = req.body;
+
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(401).json("User not found");
+    }
+
+    const movie = await Movie.findById(movieId);
+    if (!movie) {
+      return res.status(404).json({ message: "Movie not found" });
+    }
+
+    let updatedImageUrl = movie.imageUrl;  
+    if (file) {
+      console.log("Received file:", file.filename);
+      const fileName = Date.now() + path.extname(file.originalname);
+      console.log("Generated file name:", fileName);
+
+      const uploadResponse = await dbx.filesUpload({
+        path: "/" + fileName,
+        contents: file.buffer,
+      });
+
+      const linkResponse = await dbx.filesGetTemporaryLink({
+        path: uploadResponse.result.path_display,
+      });
+
+      updatedImageUrl = linkResponse.result.link;
+    }
+
+    if (title) movie.movieTitle = title;
+    if (releaseDate) movie.releaseDate = releaseDate;
+    movie.imageUrl = updatedImageUrl;
+
+    const updatedMovie = await movie.save();
+
+    if (!user.movies.includes(movie._id)) {
+      user.movies.push(updatedMovie._id);
+      await user.save();
+    }
+
+    return res.status(200).json({
+      message: "Movie updated successfully!",
+      movie: updatedMovie,
+    });
+  } catch (error: any) {
+    console.error("Error updating movie:", error);
+    return res.status(500).json({
+      message:
+        error.message || "Something went wrong while updating the movie.",
+      error: error,
+    });
+  }
+};
