@@ -183,7 +183,7 @@ export const completeSignup = async (req: Request, res: Response) => {
 export const logOut = (req: Request, res: Response) => {
   res.cookie("token", "", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production", // Set to true in production for HTTPS
+    secure: process.env.NODE_ENV === "production",
     sameSite: sameSiteValue,
     maxAge: 0,
   });

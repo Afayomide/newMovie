@@ -8,8 +8,8 @@ export interface Movie {
   }
   
   const movieSchema = new mongoose.Schema<Movie>({
-    movieTitle: { type: String, required: true, unique: true },
-    releaseDate: { type: String, required: true, unique: true },
+    movieTitle: { type: String, required: true },
+    releaseDate: { type: String, required: true },
     imageUrl: {type: String, required:true},
   });
   
