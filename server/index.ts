@@ -16,7 +16,7 @@ const port = 4000;
 const dburl: string = process.env.dburl || "";
 
 const corsOption = {
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000","https://new-movie-orpin.vercel.app"],
   credentials: true,
 };
 

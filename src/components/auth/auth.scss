@@ -69,5 +69,21 @@
   
   }
 }
+@media (max-width: 600px) {
+  .auth-container{
+    .auth-form{
+      form{
+        input{
+          width: 100%;
+          height: 5rem;
+          font-size: 1.5rem;
+        }
+        button{
+          text-align: center;
+        }
+      }
+    }
+  }
+}
 
 
