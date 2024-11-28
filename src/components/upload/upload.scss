@@ -25,7 +25,6 @@
   border-radius: 0.625rem;
   border: dotted 0.125rem #fff;
   color: white;
-  opacity: 0px;
   background-color: #224957;
 }
 .uploaded-image {
@@ -50,7 +49,7 @@
     left: 45rem;
     gap: 0rem;
     border-radius: 0.625rem;
-    opacity: 0px;
+
     background-color: #224957;
     border: none;
     color: white;
@@ -70,13 +69,13 @@
     button:nth-child(1) {
       @extend %button-styles;
       border: solid 1px #fff;
-      opacity: 0px;
+  
       background-color: rgba(34, 73, 87, 0);
     }
     button:nth-child(2) {
       @extend %button-styles;
       border: none;
-      opacity: 0px;
+  
       background-color: #2bd17e;
     }
   }
