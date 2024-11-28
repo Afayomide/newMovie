@@ -26,7 +26,6 @@ export const postMovie = async (req: Request, res: Response) => {
   }
 
   try {
-    // Find the user by ID
     const user = await User.findById(id);
     if (!user) {
       return res.status(401).json("User not found");
@@ -48,7 +47,6 @@ export const postMovie = async (req: Request, res: Response) => {
 
     const fileUrl = linkResponse.result.link;
 
-    // Create a new movie
     const newMovie = new Movie({
       movieTitle: title,
       releaseDate,
@@ -58,7 +56,6 @@ export const postMovie = async (req: Request, res: Response) => {
 
     const savedMovie = await newMovie.save();
 
-    // Add movie to user's movies list
     user.movies.unshift(savedMovie._id);
     await user.updateOne({ movies: user.movies });
 
@@ -71,7 +68,7 @@ export const postMovie = async (req: Request, res: Response) => {
     return res.status(500).json({
       message:
         error.message || "Something went wrong while uploading the file.",
-      error: error, // log full error object
+      error: error, 
     });
   }
 };
